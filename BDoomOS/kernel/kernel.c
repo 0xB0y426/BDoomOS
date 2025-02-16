@@ -129,7 +129,7 @@ void draw_menu_box() {
 
 void wait_for_1_second() {
     for (volatile int i = 0; i < 100000000; i++) {
-        // Loop para fazer um atraso simples.
+
     }
 }
 
@@ -145,12 +145,12 @@ void gui_main() {
     clear_screen();
     write_string((SCREEN_WIDTH - 17) / 2, 2, "Welcome to BDoomOS 0.1", HIGHLIGHT_COLOR);
     write_string((SCREEN_WIDTH - 33) / 2, 4, "Please wait, loading system...", WHITE_ON_BLUE);
-    wait_for_1_second();  // Aguarda 1 segundo
+    wait_for_1_second();  
 
     while (true) {
         unsigned char key = inb(KEYBOARD_DATA_PORT);
 
-        if (key == 0x1C) {  // Press Enter
+        if (key == 0x1C) {
             if (selected_option == 0) {
                 list_files();
             } else if (selected_option == 1) {
