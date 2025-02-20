@@ -1,4 +1,4 @@
-# BDoomOS
+![BDoomOS](bdoom.jpg)
 
 # What is BDoomOS?
 
