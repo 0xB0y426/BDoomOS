@@ -2,7 +2,7 @@
 
 # What is BDoomOS?
 
-BDoomOS is an open source kernel x86 project, it was made in assembly and C and will be focused on GUI
+BDoomOS is an open source kernel x86 project, it was made in assembly and C 
 
 # How do I compile the system?
 
