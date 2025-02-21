@@ -74,7 +74,7 @@ void display_dmesg() {
     write_string(start_x, start_y + 2, "Booting Kernel...", WHITE_ON_BLACK);
     write_string(start_x, start_y + 3, "Initing Kernel...", WHITE_ON_BLACK);
     write_string(start_x, start_y + 4, "Loaded!!'", WHITE_ON_BLACK);
-    write_string(start_x, start_y + 5, "BDoomOS 0.2 ready.'", WHITE_ON_BLACK);
+    write_string(start_x, start_y + 5, "BDoomOS 0.3 ready.'", WHITE_ON_BLACK);
 }
 
 #endif 
