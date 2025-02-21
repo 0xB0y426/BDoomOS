@@ -13,8 +13,7 @@ static inline void cpuid(uint32_t code, uint32_t *a, uint32_t *b, uint32_t *c, u
 void display_cpu_info() {
     uint32_t eax, ebx, ecx, edx;
     char vendor[13];
-
-    // Obter o vendedor da CPU
+    
     cpuid(0, &eax, &ebx, &ecx, &edx);
     ((uint32_t *)vendor)[0] = ebx;
     ((uint32_t *)vendor)[1] = edx;
