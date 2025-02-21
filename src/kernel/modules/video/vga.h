@@ -15,14 +15,10 @@
 #define BROWN_ON_BLACK 0x0C
 #define LIGHT_BLUE_ON_BLACK 0x1B
 #define LIGHT_GREEN_ON_BLACK 0x0A
+#define WHITE_ON_RED 0x4F
+#define WHITE_ON_GREEN 0x2F
 
 volatile char *video = (volatile char *)VIDEO_MEMORY;
-
-void write_char(int x, int y, char c, char color) {
-    int offset = (y * SCREEN_WIDTH + x) * 2;
-    video[offset] = c;
-    video[offset + 1] = color;
-}
 
 void write_string(int x, int y, const char *str, char color) {
     size_t i = 0;
@@ -30,6 +26,35 @@ void write_string(int x, int y, const char *str, char color) {
         write_char(x + i, y, str[i], color);
         i++;
     }
+}
+
+void write_char(int x, int y, char c, char color) {
+    int offset = (y * SCREEN_WIDTH + x) * 2;
+    video[offset] = c;
+    video[offset + 1] = color;
+}
+
+void write_number(int x, int y, size_t number, uint8_t color) {
+    char buffer[20];
+    int i = 0;
+
+    if (number == 0) {
+        buffer[i++] = '0';
+    } else {
+        while (number > 0) {
+            buffer[i++] = (number % 10) + '0';
+            number /= 10;
+        }
+    }
+
+    for (int j = 0; j < i / 2; j++) {
+        char temp = buffer[j];
+        buffer[j] = buffer[i - j - 1];
+        buffer[i - j - 1] = temp;
+    }
+
+    buffer[i] = '\0';
+    write_string(x, y, buffer, color);
 }
 
 void clear_screen_with_color(char color) {
