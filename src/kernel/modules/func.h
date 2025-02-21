@@ -25,19 +25,13 @@ void display_files() {
     write_string(start_x, start_y + 8, "kernel.c", WHITE_ON_BLACK);
 }
 
-void display_system_info_window() {
-    draw_window(35, 2, 30, 10, "System Info", WHITE_ON_BLACK);
-    write_string(37, 4, "OS Version: BDoomOS 0.2", WHITE_ON_BLACK);
-    write_string(37, 6, "Processor: x86", WHITE_ON_BLACK);
-    write_string(37, 8, "Bootloader: GRUB", WHITE_ON_BLACK);
-}
 void display_info() {
     int start_x = 7;
     int start_y = 9;
     
     write_string(start_x, start_y + 1, "System Info:", WHITE_ON_BLACK);
-    write_string(start_x, start_y + 2, "OS Version: BDoomOS 0.2", WHITE_ON_BLACK);
-    write_string(start_x, start_y + 3, "Processor: x86", WHITE_ON_BLACK);
+    write_string(start_x, start_y + 2, "OS Version: BDoomOS 0.3", WHITE_ON_BLACK);
+    write_string(start_x, start_y + 3, "Architecture: x86", WHITE_ON_BLACK);
     write_string(start_x, start_y + 4, "Bootloader: GRUB'", WHITE_ON_BLACK);
 }
 
@@ -52,6 +46,8 @@ void display_help() {
     write_string(start_x, start_y + 4, "drucker - Print something in the screen 'drucker BDoomOS'", WHITE_ON_BLACK);
     write_string(start_x, start_y + 5, "dmesg - Display kernel messages.", WHITE_ON_BLACK);
     write_string(start_x, start_y + 6, "info - Display system information.", WHITE_ON_BLACK);
+    write_string(start_x, start_y + 7, "meminfo - Memory RAM Info", WHITE_ON_BLACK);
+    write_string(start_x, start_y + 8, "cpuinfo - Display CPU informations.", WHITE_ON_BLACK);
 }
 
 void draw_shell_window() {
