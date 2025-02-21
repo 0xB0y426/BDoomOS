@@ -5,16 +5,16 @@
 #include "modules/keyboard/keyboard.h"
 #include "modules/func.h"
 #include "modules/keyboard/keymap.h"
+#include "modules/ram.h"
+#include "modules/cpuinfo.h"
 
-#define INPUT_BUFFER_SIZE 256
-
-char input_buffer[INPUT_BUFFER_SIZE];
-size_t input_index = 0;
 bool key_pressed[128] = {false};
 bool displaying_files = false;
 bool helping_files = false; 
 bool dmesg = false;
 bool info = false;
+bool mem = false;
+bool cpuinfo = false;
 
 bool starts_with(const char *input, const char *cmd);
 
@@ -59,9 +59,15 @@ void process_command() {
         } else if (starts_with(input_buffer, "info")) {
             display_info();
             info = true;
+        } else if (starts_with(input_buffer, "meminfo")) {
+            display_memory_info();
+            mem = true;
+        } else if (starts_with(input_buffer, "cpuinfo")) {
+            display_cpu_info();
+            cpuinfo = true;
         } else {
-            write_string(7, 9, "Unknown Command", WHITE_ON_BLACK);
-        }
+            write_string(7, 9, "Unknown command.", WHITE_ON_BLUE);
+        } 
 
         write_string(7, 7, "> ", WHITE_ON_BLACK);
         write_string(9, 7, input_buffer, WHITE_ON_BLACK);
@@ -101,8 +107,14 @@ void keyboard_listener() {
                     draw_shell_window();
                     info = false;
                 }
-
-                
+                else if (mem) {
+                    draw_shell_window();
+                    mem = false;
+                }
+                else if (cpuinfo) {
+                    draw_shell_window();
+                    cpuinfo = false;
+                }
                 input_buffer[input_index++] = pressed_key;
                 input_buffer[input_index] = '\0';
                 write_char(9 + input_index - 1, 7, pressed_key, WHITE_ON_BLACK);
@@ -114,5 +126,6 @@ void keyboard_listener() {
 }
 
 void kernel_main() {
+    init_ram();
     keyboard_listener();
 }
