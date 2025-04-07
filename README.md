@@ -22,7 +22,7 @@ Then, run the script:
 
 ./gccbuilder.sh
 
-This will generate an ISO in the disk_images folder. You can then use VirtualBox, QEMU, etc., to run the system. Note that it cannot be run in real mode yet.
+This will generate an ISO in the disk_images folder. 
 
 # What's in it?
 
